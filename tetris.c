@@ -13,31 +13,19 @@
 #include <ole2.h>
 #include <ocidl.h>
 #include <winuser.h>
-#include<math.h>
+#include <math.h>
+#include <game.h>
 
 #define PI 3.1415926
-#define SquarLength 0.3  /*Õý·½ÐÎ±ß³¤*/ 
-void DrawSquar(double x,double y, double dx, double dy);/*»æÖÆ£¨x,y)ÎªÖÐÐÄ»æÖÆ¾ØÐÎ*/ 
+#define SquarLength 0.3  /*ï¿½ï¿½ï¿½ï¿½ï¿½Î±ß³ï¿½*/ 
+void DrawSquar(double x,double y, double dx, double dy);/*ï¿½ï¿½ï¿½Æ£ï¿½x,y)Îªï¿½ï¿½ï¿½Ä»ï¿½ï¿½Æ¾ï¿½ï¿½ï¿½*/ 
 
 
 void Main(){
 	InitGraphics();
- 
-	SetPenColor("Dark Gray");
-	int i,j;
-	for(i=0;i<10;i++){
-		for(j=0;j<20;j++){
-			DrawSquar(3.2+i*SquarLength,1+j*SquarLength,SquarLength,SquarLength);/*×óÉÏ½Ç×ø±ê(4.0,6.0)£¬(4.0,2.0+±ß³¤*20)*/ 
-		}
-	}
-
+	registerKeyboardEvent(KeyboardEventProcess);
+    registerMouseEvent(MouseEventProcess);
+    registerTimerEvent(TimerEventProcess);
+    registerCharEvent(CharEventProcess);
+	Start();
 }
-
-void DrawSquar(double x,double y, double dx, double dy){
-	MovePen(x-dx/2,y-dx/2);
-	DrawLine(dx,0);
-	DrawLine(0,dy);
-	DrawLine(-dx,0);
-	DrawLine(0,-dy); 
-	
-}	

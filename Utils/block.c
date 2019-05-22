@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <math.h>
 #include "extgraph.h"
 #include "block.h"
@@ -42,4 +43,16 @@ void getPos(Block x) {
         int pos_x = x.x + Direction[(BlockShape[x.type][i] + 4 * dir) % 16][0];
         int pos_y = x.y + Direction[(BlockShape[x.type][i] + 4 * dir) % 16][1];
     }
+}
+
+Block randomBlock(){
+    static int inited = 0;
+    if(inited == 0){
+        inited = 1;
+        srand(time(NULL));
+    }
+    Block ret;
+    ret.type = rand() % 7 + 1;
+    ret.direction = 0;
+    return ret;
 }
