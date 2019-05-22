@@ -1,4 +1,5 @@
-
+#include <stdio.h>
+#include <stdlib.h> 
 struct UserInfo{
     char s[22];
     int gameCount;
